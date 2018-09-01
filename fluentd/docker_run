@@ -1,0 +1,1 @@
+docker run -d -v /root/fluentd/:/fluentd/etc -e FLUENTD_CONF=fluent.conf -p 24224:24224 -p 24224:24224/udp -v /root/httpd/accesslog:/fluentd/log custom-fluentd
