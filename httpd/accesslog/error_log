@@ -89,3 +89,14 @@ AH00558: httpd: Could not reliably determine the server's fully qualified domain
 [Sat Sep 01 21:25:39.184701 2018] [core:notice] [pid 7] AH00094: Command line: '/usr/sbin/httpd -D FOREGROUND'
 [Sat Sep 01 23:33:49.407238 2018] [autoindex:error] [pid 9] [client 138.68.244.222:51116] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.html) found, and server-generated directory index forbidden by Options directive
 [Sun Sep 02 00:01:44.357360 2018] [autoindex:error] [pid 10] [client 101.0.5.121:49745] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.html) found, and server-generated directory index forbidden by Options directive
+[Sun Sep 02 01:51:06.637515 2018] [autoindex:error] [pid 12] [client 176.65.250.105:41739] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.html) found, and server-generated directory index forbidden by Options directive
+[Sun Sep 02 07:53:33.650374 2018] [suexec:notice] [pid 7] AH01232: suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)
+AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
+[Sun Sep 02 07:53:33.665719 2018] [auth_digest:notice] [pid 7] AH01757: generating secret for digest authentication ...
+[Sun Sep 02 07:53:33.666349 2018] [lbmethod_heartbeat:notice] [pid 7] AH02282: No slotmem from mod_heartmonitor
+[Sun Sep 02 07:53:33.669194 2018] [mpm_prefork:notice] [pid 7] AH00163: Apache/2.4.6 (CentOS) configured -- resuming normal operations
+[Sun Sep 02 07:53:33.669214 2018] [core:notice] [pid 7] AH00094: Command line: '/usr/sbin/httpd -D FOREGROUND'
+[Sun Sep 02 07:54:30.014626 2018] [autoindex:error] [pid 8] [client 217.60.105.238:36503] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.html) found, and server-generated directory index forbidden by Options directive
+[Sun Sep 02 09:27:55.721702 2018] [autoindex:error] [pid 10] [client 95.39.49.15:33132] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.html) found, and server-generated directory index forbidden by Options directive
+[Sun Sep 02 09:53:47.582080 2018] [autoindex:error] [pid 9] [client 74.82.47.3:54214] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.html) found, and server-generated directory index forbidden by Options directive
+[Sun Sep 02 10:48:51.465707 2018] [autoindex:error] [pid 11] [client 109.105.211.206:51687] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.html) found, and server-generated directory index forbidden by Options directive

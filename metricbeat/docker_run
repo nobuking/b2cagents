@@ -1,1 +1,1 @@
-docker run -u root -v /var/run/docker.sock:/var/run/docker.sock -v /proc:/hostfs/proc:ro -v /sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro -v /:/hostfs:ro --net=host -v /root/metricbeat/metricbeat.yml:/usr/share/metricbeat/metricbeat.yml docker.elastic.co/beats/metricbeat:6.3.2
+docker run -d -u root -v /var/run/docker.sock:/var/run/docker.sock -v /proc:/hostfs/proc:ro -v /sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro -v /:/hostfs:ro --net=host -v /root/metricbeat/metricbeat.yml:/usr/share/metricbeat/metricbeat.yml docker.elastic.co/beats/metricbeat:6.3.2
