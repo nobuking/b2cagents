@@ -1,1 +1,1 @@
-docker run -d --ulimit nofile=65536 -v /root/fluentd/:/fluentd/etc -e FLUENTD_CONF=fluent.conf -p 24224:24224 -p 24224:24224/udp -v /root/httpd/accesslog:/fluentd/log custom-fluentd
+docker run -d --ulimit nofile=65536 -e HOSTNAME=mnv3fwbsv001 -v /home/tsoldbsmon/fluentd/config:/fluentd/etc -e FLUENTD_CONF=fluent.conf -v /opt/mnv/vol/web_serv/logs:/fluentd/log/accesslog -v /var/log:/fluentd/log/syslog -v /home/tsoldbsmon/fluentd/pos:/fluentd/pos -v /home/tsoldbsmon/fluentd/buffer:/fluentd/buffer bcc/fluentd

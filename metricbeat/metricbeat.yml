@@ -14,7 +14,8 @@
 metricbeat.config.modules:
 
   # Glob pattern for configuration reloading
-  path: ${path.config}/conf.d/*.yml
+#  path: ${path.config}/conf.d/*.yml
+  path: /usr/share/metricbeat/*.yml 
 
   # Period on which files under path should be checked for changes
   reload.period: 10s
@@ -169,38 +170,38 @@ metricbeat.modules:
 
 
 #------------------------------- Jolokia Module ------------------------------
-- module: jolokia
-  metricsets: ["jmx"]
-  period: 10s
-  hosts: ["localhost"]
-  namespace: "metrics"
+#- module: jolokia
+#  metricsets: ["jmx"]
+#  period: 10s
+#  hosts: ["localhost"]
+#  namespace: "metrics"
   #username: "user"
   #password: "secret"
-  jmx.mappings:
-    - mbean: 'java.lang:type=Runtime'
-      attributes:
-        - attr: Uptime
-          field: uptime
-    - mbean: 'java.lang:type=Memory'
-      attributes:
-        - attr: HeapMemoryUsage
-          field: memory.heap_usage
-        - attr: NonHeapMemoryUsage
-          field: memory.non_heap_usage
-    GC Metrics - this depends on what is available on your JVM
-     - mbean: 'java.lang:type=GarbageCollector,name=ConcurrentMarkSweep'
-       attributes:
-         - attr: CollectionTime
-           field: gc.cms_collection_time
-         - attr: CollectionCount
-           field: gc.cms_collection_count
+#  jmx.mappings:
+#    - mbean: 'java.lang:type=Runtime'
+#      attributes:
+#        - attr: Uptime
+#          field: uptime
+#    - mbean: 'java.lang:type=Memory'
+#      attributes:
+#        - attr: HeapMemoryUsage
+#          field: memory.heap_usage
+#        - attr: NonHeapMemoryUsage
+#          field: memory.non_heap_usage
+#    GC Metrics - this depends on what is available on your JVM
+#     - mbean: 'java.lang:type=GarbageCollector,name=ConcurrentMarkSweep'
+#       attributes:
+#         - attr: CollectionTime
+#           field: gc.cms_collection_time
+#         - attr: CollectionCount
+#           field: gc.cms_collection_count
 
 
 #------------------------------- Kibana Module -------------------------------
 - module: kibana
   metricsets: ["status"]
   period: 10s
-  hosts: ["52.192.199.244:5601"]
+  hosts: ["10.2.81.233:5601"]
   enabled: true
 
 
@@ -405,7 +406,7 @@ output.elasticsearch:
   # Scheme and port can be left out and will be set to the default (http and 9200)
   # In case you specify and additional path, the scheme is required: http://localhost:9200/path
   # IPv6 addresses should always be defined as: https://[2001:db8::1]:9200
-  hosts: ["13.113.56.222:9200"]
+  hosts: ["10.2.81.233:9200"]
 
   # Set gzip compression level.
   #compression_level: 0
@@ -426,7 +427,7 @@ output.elasticsearch:
   # Optional index name. The default is "metricbeat" plus date
   # and generates [metricbeat-]YYYY.MM.DD keys.
   # In case you modify this pattern you must update setup.template.name and setup.template.pattern accordingly.
-  index: "metricbeat-%{[beat.version]}-%{+yyyy.MM.dd}"
+  #index: "metricbeat-%{[beat.version]}-%{+yyyy.MM.dd}"
 
   # Optional ingest node pipeline. By default no pipeline will be used.
   #pipeline: ""
