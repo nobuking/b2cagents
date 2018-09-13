@@ -7,7 +7,7 @@ FROM fluent/fluentd:v1.2
 RUN apk add --update --virtual .build-deps \
         sudo build-base ruby-dev \
  && sudo fluent-gem install \
-        fluent-plugin-elasticsearch fluetn-plugin-suppress fluent-plugin-record-modifier\
+        fluent-plugin-elasticsearch fluent-plugin-suppress fluent-plugin-record-modifier\
  && sudo gem sources --clear-all \
  && apk del .build-deps \
  && rm -rf /var/cache/apk/* \
