@@ -1,0 +1,12 @@
+#Elasticsearch for b2c load test
+
+FROM docker.elastic.co/elasticsearch/elasticsearch:6.3.2
+
+MAINTAINER Nobuki Hara <hara.nobuki.a9n@jp.nssol.nssmc.com>
+
+RUN yum install -y java
+RUN wget http://dl.embulk.org/embulk-latest.jar -O /usr/local/bin/embulk
+RUN chmod +x /usr/local/bin/embulk
+RUN embulk gem install embulk-output-elasticsearch
+RUN bin/elasticsearch-plugin install analysis-kuromoji
+
