@@ -1,0 +1,85 @@
+version: '2'
+services:
+ elasticsearch01:
+   image: bcc/elasticsearch:v1.0
+   environment:
+     - network.host=_eth0:ipv4_
+     - bootstrap.memory_lock=true
+     - cluster.name=bcc-cluster
+     - discovery.zen.minimum_master_nodes=2
+     - discovery.zen.ping.unicast.hosts=10.7.0.137:9300,10.7.0.137:9301,10.7.0.208:9300
+     - http.host=0.0.0.0
+     - transport.host=0.0.0.0
+     - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+   ports:
+     - 9200:9200
+     - 9300:9300
+   volumes:
+     - es-data01:/usr/share/elasticsearch/data
+   logging: 
+     driver: "json-file" 
+   ulimits: 
+     nproc: 65536
+     nofile:
+       soft: 65536
+       hard: 65536 
+     memlock: 
+       soft: -1
+       hard: -1
+   network_mode: "host"
+
+ elasticsearch02:
+   image: bcc/elasticsearch:v1.0
+   environment:
+     - network.host=_eth0:ipv4_
+     - bootstrap.memory_lock=true
+     - cluster.name=bcc-cluster
+     - discovery.zen.minimum_master_nodes=2
+     - discovery.zen.ping.unicast.hosts=10.7.0.137:9300,10.7.0.137:9301,10.7.0.208:9300
+     - http.host=0.0.0.0
+     - transport.host=0.0.0.0
+     - xpack.security.enabled=false
+     #- xpack.monitoring.enabled=true
+     - xpack.watcher.enabled=false
+     - xpack.graph.enabled=false
+     - xpack.ml.enabled=false
+     - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+   ports:
+     - 9201:9200
+     - 9301:9300
+   volumes:
+     - es-data02:/usr/share/elasticsearch/data
+   logging:
+     driver: "json-file"
+   ulimits:
+     nproc: 65536
+     nofile:
+       soft: 65536
+       hard: 65536
+     memlock:
+      soft: -1
+      hard: -1
+   network_mode: "host"
+
+ kibana:
+   image: bcc/kibana:v1.0
+   environment:
+     #- "ELASTICSEARCH_URL=http://elasticsearch01:9200"
+     - "ELASTICSEARCH_URL=http://10.7.0.137:9200"
+     - xpack.graph.enabled=false
+     - xpack.security.enabled=false
+     - xpack.monitoring.enabled=true
+     - xpack.watcher.enabled=false
+     - xpack.ml.enabled=false
+   ports:
+     - 5601:5601 
+   depends_on:
+     - elasticsearch01
+     - elasticsearch02
+   network_mode: "host"
+
+volumes:
+  es-data01:
+    driver: local
+  es-data02:
+    driver: local
